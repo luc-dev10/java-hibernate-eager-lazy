@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "instructor")
 public class Instructor {
+
     // fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Instructor {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Course> courseList;
 
     // getters and setters
